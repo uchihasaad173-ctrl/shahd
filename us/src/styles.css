@@ -1,0 +1,383 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "For Shahd" romantic palette.
+ * Soft pink, cream and pastel-red; night sections override tokens locally
+ * with a .night-theme wrapper.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-blush: var(--blush);
+  --color-rose-soft: var(--rose-soft);
+  --color-gold: var(--gold);
+  --color-lavender: var(--lavender);
+  --font-hand: "Caveat", cursive;
+  --font-body: "Quicksand", sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+  --background: oklch(0.977 0.014 350);
+  --foreground: oklch(0.3 0.05 345);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.3 0.05 345);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.3 0.05 345);
+  --primary: oklch(0.66 0.17 15);
+  --primary-foreground: oklch(0.99 0.01 350);
+  --secondary: oklch(0.93 0.045 350);
+  --secondary-foreground: oklch(0.42 0.09 15);
+  --muted: oklch(0.95 0.02 350);
+  --muted-foreground: oklch(0.55 0.06 345);
+  --accent: oklch(0.92 0.045 330);
+  --accent-foreground: oklch(0.42 0.09 15);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.92 0.035 350);
+  --input: oklch(0.92 0.035 350);
+  --ring: oklch(0.66 0.17 15);
+  --blush: oklch(0.86 0.07 350);
+  --rose-soft: oklch(0.78 0.11 5);
+  --gold: oklch(0.8 0.13 85);
+  --lavender: oklch(0.88 0.05 300);
+  --font-hand: "Caveat", cursive;
+  --font-body: "Quicksand", sans-serif;
+}
+
+/* Night wrapper — deep burgundy / purple night sky */
+.night-theme {
+  --background: oklch(0.22 0.06 300);
+  --foreground: oklch(0.94 0.02 330);
+  --card: oklch(0.28 0.06 295);
+  --card-foreground: oklch(0.94 0.02 330);
+  --popover: oklch(0.28 0.06 295);
+  --popover-foreground: oklch(0.94 0.02 330);
+  --primary: oklch(0.78 0.11 350);
+  --primary-foreground: oklch(0.22 0.06 300);
+  --secondary: oklch(0.32 0.07 295);
+  --secondary-foreground: oklch(0.94 0.02 330);
+  --muted: oklch(0.32 0.06 295);
+  --muted-foreground: oklch(0.75 0.04 330);
+  --accent: oklch(0.34 0.07 320);
+  --accent-foreground: oklch(0.94 0.02 330);
+  --border: oklch(0.45 0.06 320);
+  --input: oklch(0.45 0.06 320);
+  --ring: oklch(0.78 0.11 350);
+  --gold: oklch(0.85 0.13 85);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Finale wrapper — near-black dreamy night */
+.finale-theme {
+  --background: oklch(0.16 0.04 300);
+  --foreground: oklch(0.94 0.02 330);
+  --card: oklch(0.22 0.05 295);
+  --card-foreground: oklch(0.94 0.02 330);
+  --primary: oklch(0.8 0.12 350);
+  --primary-foreground: oklch(0.16 0.04 300);
+  --secondary: oklch(0.26 0.05 295);
+  --secondary-foreground: oklch(0.94 0.02 330);
+  --muted: oklch(0.26 0.05 295);
+  --muted-foreground: oklch(0.72 0.04 330);
+  --accent: oklch(0.3 0.06 320);
+  --accent-foreground: oklch(0.94 0.02 330);
+  --border: oklch(0.4 0.06 320);
+  --input: oklch(0.4 0.06 320);
+  --ring: oklch(0.8 0.12 350);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+  }
+}
+
+/* ---------- Decorative animations ---------- */
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(24deg);
+    opacity: 0;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes gentle-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heartbeat-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.12);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.1);
+  }
+  56% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.4) translateY(20px);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.06) translateY(-4px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  15% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes stamp-slam {
+  0% {
+    transform: scale(2.4) rotate(-18deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.95) rotate(-8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(-10deg);
+    opacity: 1;
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes envelope-flap {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes car-drive {
+  0% {
+    transform: translateX(-8%) rotate(-1deg);
+  }
+  50% {
+    transform: translateX(8%) rotate(1deg);
+  }
+  100% {
+    transform: translateX(-8%) rotate(-1deg);
+  }
+}
+
+@keyframes road-dash {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: 80px;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 18px oklch(0.7 0.18 350 / 0.55));
+  }
+  50% {
+    filter: drop-shadow(0 0 42px oklch(0.75 0.2 350 / 0.85));
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.015);
+  }
+}
+
+.anim-float-up {
+  animation: float-up linear infinite;
+}
+.anim-twinkle {
+  animation: twinkle ease-in-out infinite;
+}
+.anim-bob {
+  animation: gentle-bob 3.2s ease-in-out infinite;
+}
+.anim-heartbeat {
+  animation: heartbeat-pulse 1.1s ease-in-out infinite;
+}
+.anim-heartbeat-fast {
+  animation: heartbeat-pulse 0.28s ease-in-out infinite;
+}
+.anim-pop-in {
+  animation: pop-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-wiggle {
+  animation: wiggle 2.4s ease-in-out infinite;
+}
+.anim-stamp {
+  animation: stamp-slam 0.5s ease-out both;
+}
+.anim-car {
+  animation: car-drive 6s ease-in-out infinite;
+}
+.anim-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+.anim-glow {
+  animation: glow-pulse 2.4s ease-in-out infinite;
+}
+
+/* Road with heart dashes for the driving section */
+.heart-road {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    oklch(0.7 0.15 350 / 0.9) 0 6px,
+    transparent 7px
+  );
+  background-size: 26px 80px;
+  background-repeat: repeat-y;
+  background-position: center top;
+  animation: road-dash 2.2s linear infinite;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .anim-float-up,
+  .anim-twinkle,
+  .anim-bob,
+  .anim-heartbeat,
+  .anim-heartbeat-fast,
+  .anim-pop-in,
+  .anim-wiggle,
+  .anim-stamp,
+  .anim-car,
+  .anim-breathe,
+  .anim-glow,
+  .heart-road {
+    animation: none !important;
+  }
+}
